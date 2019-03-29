@@ -9,7 +9,7 @@ Welcome to Laser Kittens! The home of... well... you get the idea.
 
 If you see a dude wearing this t-shirt, it might be me.
 
-![Laser Kitten T-Shirt](/static/laserkitten.jpg)
+![Laser Kitten T-Shirt](/laserkitten.jpg)
 
 {{< border "dashed" >}}
 Cyber cyber cyber is meowzek to my ears and blockchain tacos are yummy

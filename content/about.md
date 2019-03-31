@@ -7,6 +7,8 @@ author = "Dan"
 
 Welcome to Laser Kittens! The home of... well... you get the idea.
 
+This is a personal blog that is typically about technology, programming, cybersecurity, reverse engineering, and whatever else I feel like writing about and sharing publicly.
+
 If you see a dude wearing this t-shirt, it might be me.
 
 ![Laser Kitten T-Shirt](/laserkitten.jpg)

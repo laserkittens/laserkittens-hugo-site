@@ -11,9 +11,9 @@ This is my personal blog. I *typically* write about technology, programming, cyb
 
 If you see a dude wearing this t-shirt, it might be me.
 
-![Laser Kitten T-Shirt](/laserkitten.jpg)
+![Laser Kitten T-Shirt](/img/laserkitten.jpg)
 
-[![GitHub](/github.png) Teh codez](https://github.com/danzek/)
+[![GitHub](/img/github.png) Teh codez](https://github.com/danzek/)
 
 {{< border "dashed" >}}
 Cyber cyber cyber is meowzek to my ears and blockchain tacos are yummy

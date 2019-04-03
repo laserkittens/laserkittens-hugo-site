@@ -26,7 +26,7 @@ One of them is just the README file that the malware drops all over the disk, so
 
 Beginning with this decompiled code, I quickly whipped up [a deobfuscator in C++](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.cpp), basically mimicking the decompiled code (with a couple minor shortcuts), which [I've made available on GitHub.](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.cpp) Shortly thereafter, I decided to write [a Python 3 version](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.py) that is much shorter (and cross-platform compatible), which is [now also on my GitHub.](https://github.com/danzek/ransomware-sucks/blob/master/clop/decoder/decodeResource.py)
 
-The ransomware has a harcoded "magic" string that it uses to deobfuscate the resources:
+The ransomware has a hardcoded "magic" string that it uses to deobfuscate the resources:
 
 ```
 CHAR clopDecodeResourceSIXSIX1_MagicString[] = "Clopfdwsjkjr23LKhuifdhwui73826ygGKUJFHGdwsieflkdsj324765tZPKQWLjwNVBFHewiuhryui32JKG";

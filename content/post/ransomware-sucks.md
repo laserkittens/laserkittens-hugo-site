@@ -15,7 +15,7 @@ author = "Dan"
 summary = true 
 +++
 
-[A colleague](https://github.com/digitalcroqueta) and I reverse-engineered the Clop ransomware binary, and observed that it contained two obfuscated resources:
+[A colleague](https://github.com/digitalcroqueta) and I reverse-engineered the Clop ransomware binary (with SHA256 hash value `2f29950640d024779134334cad79e2013871afa08c7be94356694db12ee437e2`), and observed that it contained two obfuscated resources:
 
 * SIXSIX
 * SIXSIX1
